@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{6654CD01-E897-40AE-AD41-B26E7EDC4EA5}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{75CFF003-8A77-4668-B898-298258A5BD09}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -280,20 +280,22 @@
                     <outputColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="50"
                       lineageId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[name]"
                       name="name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="50"
                       lineageId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[address]"
                       name="address"
                       truncationRowDisposition="FailComponent" />
@@ -353,12 +355,14 @@
                     <externalMetadataColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       name="name" />
                     <externalMetadataColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       name="address" />
                     <externalMetadataColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[state]"
@@ -401,13 +405,15 @@
                     <outputColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       lineageId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[name]"
                       name="name" />
                     <outputColumn
                       refId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       lineageId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[address]"
                       name="address" />
                     <outputColumn
@@ -499,7 +505,8 @@
                     <inputColumn
                       refId="Package\Country_Dimension_ETL\Sort.Inputs[Sort Input].Columns[name]"
                       cachedCodepage="1252"
-                      cachedDataType="text"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="name"
                       lineageId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[name]">
                       <properties>
@@ -516,7 +523,8 @@
                     <inputColumn
                       refId="Package\Country_Dimension_ETL\Sort.Inputs[Sort Input].Columns[address]"
                       cachedCodepage="1252"
-                      cachedDataType="text"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="address"
                       lineageId="Package\Country_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[address]">
                       <properties>
@@ -630,7 +638,8 @@
                     <outputColumn
                       refId="Package\Country_Dimension_ETL\Sort.Outputs[Sort Output].Columns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       lineageId="Package\Country_Dimension_ETL\Sort.Outputs[Sort Output].Columns[name]"
                       name="name">
                       <properties>
@@ -644,7 +653,8 @@
                     <outputColumn
                       refId="Package\Country_Dimension_ETL\Sort.Outputs[Sort Output].Columns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       lineageId="Package\Country_Dimension_ETL\Sort.Outputs[Sort Output].Columns[address]"
                       name="address">
                       <properties>
@@ -828,20 +838,22 @@
                     <outputColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="50"
                       lineageId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[name]"
                       name="name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="50"
                       lineageId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[address]"
                       name="address"
                       truncationRowDisposition="FailComponent" />
@@ -901,12 +913,14 @@
                     <externalMetadataColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       name="name" />
                     <externalMetadataColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       name="address" />
                     <externalMetadataColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].ExternalColumns[state]"
@@ -949,13 +963,15 @@
                     <outputColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       lineageId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[name]"
                       name="name" />
                     <outputColumn
                       refId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       lineageId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Error Output].Columns[address]"
                       name="address" />
                     <outputColumn
@@ -1086,14 +1102,16 @@
                     <inputColumn
                       refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].Columns[name]"
                       cachedCodepage="1252"
-                      cachedDataType="text"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="name"
                       externalMetadataColumnId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[name]"
                       lineageId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[name]" />
                     <inputColumn
                       refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].Columns[address]"
                       cachedCodepage="1252"
-                      cachedDataType="text"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="address"
                       externalMetadataColumnId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[address]"
                       lineageId="Package\Customer_Dimension_ETL\Customer.Outputs[OLE DB Source Output].Columns[address]" />
@@ -1129,12 +1147,14 @@
                     <externalMetadataColumn
                       refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[name]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       name="name" />
                     <externalMetadataColumn
                       refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[address]"
                       codePage="1252"
-                      dataType="text"
+                      dataType="str"
+                      length="50"
                       name="address" />
                     <externalMetadataColumn
                       refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[segment_id]"
@@ -1148,6 +1168,14 @@
                       dataType="str"
                       length="25"
                       name="segment_name" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbDate"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dimension_ETL\Customer_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbDate"
+                      name="end_date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3149,7 +3177,7 @@ where [refTable].[customer_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="name" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="address" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="segment_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="segment_name" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="address" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="segment_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="segment_name" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="start_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="end_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -3309,7 +3337,7 @@ where [refTable].[customer_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="name" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="address" dataType="DT_TEXT" length="0" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="city" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="country" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="customer_segment" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="address" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="city" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="country" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="customer_segment" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -4344,6 +4372,40 @@ where [refTable].[product_id] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B7A5E670-B5F6-42AA-8F3D-93FCE555007B}"
+      DTS:From="Package\Country_Dimension_ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Product_Dimension_ETL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{17E6FF03-BC9F-4C29-A50F-0A47CBA6CB03}"
+      DTS:From="Package\Product_Dimension_ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Customer_Dimension_ETL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{7021AF76-C77B-4EDC-8533-147678E4E08C}"
+      DTS:From="Package\Customer_Dimension_ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Date_Dimension_ETL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B6651B1F-270E-481C-831E-04D9E9B84D76}"
+      DTS:From="Package\Date_Dimension_ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Sales_Fact_ETL" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -4355,27 +4417,127 @@ where [refTable].[product_id] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="194,42"
           Id="Package\Country_Dimension_ETL"
-          TopLeft="9,8.5" />
+          TopLeft="28,8.5" />
         <NodeLayout
           Size="202,42"
           Id="Package\Customer_Dimension_ETL"
-          TopLeft="14.5,127" />
+          TopLeft="29.9285714285714,185.571428571429" />
         <NodeLayout
           Size="193,42"
           Id="Package\Product_Dimension_ETL"
-          TopLeft="10,67" />
+          TopLeft="29,97" />
         <NodeLayout
           Size="152,42"
           Id="Package\Sales_Fact_ETL"
-          TopLeft="19.5,256" />
+          TopLeft="32.7857142857143,361.714285714286" />
         <NodeLayout
           Size="179.5,42"
           Id="Package\Date_Dimension_ETL"
-          TopLeft="16,187.5" />
+          TopLeft="29.2857142857143,270.357142857143" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="125.25,50.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="128.214285714286,139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5714285714286"
+              Start="0,0"
+              End="0,39.0714285714286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.0714285714286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="122.482142857143,227.571428571429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.7857142857142"
+              Start="0,0"
+              End="0,35.2857142857142">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.2857142857142" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="119.035714285714,312.357142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.25,49.3571428571429"
+              Start="0,0"
+              End="-10.25,41.8571428571429">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6785714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6785714285714"
+                    Point2="0,24.6785714285714"
+                    Point3="-4,24.6785714285714" />
+                  <mssgle:LineSegment
+                    End="-6.25000000000003,24.6785714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.25000000000003,24.6785714285714"
+                    Point2="-10.25,24.6785714285714"
+                    Point3="-10.25,28.6785714285714" />
+                  <mssgle:LineSegment
+                    End="-10.25,41.8571428571429" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4660,9 +4822,7 @@ where [refTable].[product_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4779,13 +4939,13 @@ where [refTable].[product_id] = ?</property>
           TopLeft="96.125,121.25" />
         <EdgeLayout
           Id="Package\Sales_Fact_ETL.Paths[OLE DB Source Output]"
-          TopLeft="111,47.5">
+          TopLeft="168.75,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="77.625,73.75"
+              EndConnector="19.875,73.75"
               Start="0,0"
-              End="77.625,66.25">
+              End="19.875,66.25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -4796,13 +4956,13 @@ where [refTable].[product_id] = ?</property>
                     Point2="0,36.875"
                     Point3="4,36.875" />
                   <mssgle:LineSegment
-                    End="73.625,36.875" />
+                    End="15.875,36.875" />
                   <mssgle:CubicBezierSegment
-                    Point1="73.625,36.875"
-                    Point2="77.625,36.875"
-                    Point3="77.625,40.875" />
+                    Point1="15.875,36.875"
+                    Point2="19.875,36.875"
+                    Point3="19.875,40.875" />
                   <mssgle:LineSegment
-                    End="77.625,66.25" />
+                    End="19.875,66.25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
