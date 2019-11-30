@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{E7DB7D4D-2FC7-4DAC-AA2A-37D14C73B716}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{E881379A-56E7-4942-9166-18EA2E549A92}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -310,6 +310,168 @@
               </outputs>
             </component>
             <component
+              refId="Package\SCD - 2\Customer_Segment_Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Customer_Segment_Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Customer_Segment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Customer_Segment]) [refTable]
+where [refTable].[seg_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="seg_id" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="segment_name" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\SCD - 2\Customer.Outputs[OLE DB Source Output].Columns[customer_segment]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCD - 2\Customer_Segment_Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DollMartDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DollMartDatabase]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SCD - 2\Customer_Segment_Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD - 2\Customer_Segment_Lookup.Inputs[Lookup Input].Columns[customer_segment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="customer_segment"
+                      lineageId="Package\SCD - 2\Customer.Outputs[OLE DB Source Output].Columns[customer_segment]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">seg_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\SCD - 2\Customer_Segment_Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Match Output].Columns[segment_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="25"
+                      lineageId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Match Output].Columns[segment_name]"
+                      name="segment_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">segment_name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\SCD - 2\Customer_Segment_Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\SCD - 2\Customer_Segment_Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\SCD - 2\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -553,6 +715,22 @@
                       cachedName="address"
                       externalMetadataColumnId="Package\SCD - 2\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[address]"
                       lineageId="Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[address]" />
+                    <inputColumn
+                      refId="Package\SCD - 2\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_segment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="customer_segment"
+                      externalMetadataColumnId="Package\SCD - 2\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[segment_id]"
+                      lineageId="Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[customer_segment]" />
+                    <inputColumn
+                      refId="Package\SCD - 2\Insert Destination.Inputs[OLE DB Destination Input].Columns[segment_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="segment_name"
+                      externalMetadataColumnId="Package\SCD - 2\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[segment_name]"
+                      lineageId="Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[segment_name]" />
                     <inputColumn
                       refId="Package\SCD - 2\Insert Destination.Inputs[OLE DB Destination Input].Columns[start_date]"
                       cachedDataType="dbDate"
@@ -1032,6 +1210,21 @@
                           name="OutputColumnLineageID">#{Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[customer_segment]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD - 2\Union All.Inputs[Union All Input 1].Columns[segment_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="segment_name"
+                      lineageId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Match Output].Columns[segment_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[segment_name]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1145,6 +1338,21 @@
                           name="OutputColumnLineageID">#{Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[customer_segment]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD - 2\Union All.Inputs[Union All Input 2].Columns[segment_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="segment_name"
+                      lineageId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Match Output].Columns[segment_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[segment_name]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1210,6 +1418,13 @@
                       length="25"
                       lineageId="Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[customer_segment]"
                       name="customer_segment" />
+                    <outputColumn
+                      refId="Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[segment_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\SCD - 2\Union All.Outputs[Union All Output 1].Columns[segment_name]"
+                      name="segment_name" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1233,6 +1448,11 @@
               name="Historical Attribute Inserts Output"
               startId="Package\SCD - 2\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
             <path
+              refId="Package\SCD - 2.Paths[Lookup Match Output]"
+              endId="Package\SCD - 2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Lookup Match Output"
+              startId="Package\SCD - 2\Customer_Segment_Lookup.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\SCD - 2.Paths[New Output]"
               endId="Package\SCD - 2\Union All.Inputs[Union All Input 1]"
               name="New Output"
@@ -1244,7 +1464,7 @@
               startId="Package\SCD - 2\OLE DB Command.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\SCD - 2.Paths[OLE DB Source Output]"
-              endId="Package\SCD - 2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              endId="Package\SCD - 2\Customer_Segment_Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\SCD - 2\Customer.Outputs[OLE DB Source Output]" />
             <path
@@ -1288,7 +1508,11 @@
         <NodeLayout
           Size="208.5,42"
           Id="Package\SCD - 2\Slowly Changing Dimension"
-          TopLeft="128,107.5" />
+          TopLeft="128,209.5" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\SCD - 2\Customer_Segment_Lookup"
+          TopLeft="126.75,107.5" />
         <EdgeLayout
           Id="Package\SCD - 2.Paths[OLE DB Source Output]"
           TopLeft="232.25,47.5">
@@ -1311,13 +1535,37 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SCD - 2.Paths[Lookup Match Output]"
+          TopLeft="232.25,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="154,42"
           Id="Package\SCD - 2\Derived Column"
-          TopLeft="17.25,209.5" />
+          TopLeft="17.25,311.5" />
         <EdgeLayout
           Id="Package\SCD - 2.Paths[Historical Attribute Inserts Output]"
-          TopLeft="198.833333333333,149.5">
+          TopLeft="198.833333333333,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1354,10 +1602,10 @@
         <NodeLayout
           Size="165.5,42"
           Id="Package\SCD - 2\OLE DB Command"
-          TopLeft="5.50000000000003,311.5" />
+          TopLeft="5.50000000000003,413.5" />
         <EdgeLayout
           Id="Package\SCD - 2.Paths[Derived Column Output]"
-          TopLeft="91.25,251.5">
+          TopLeft="91.25,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1380,10 +1628,10 @@
         <NodeLayout
           Size="120.5,42"
           Id="Package\SCD - 2\Union All"
-          TopLeft="172,413.5" />
+          TopLeft="172,515.5" />
         <EdgeLayout
           Id="Package\SCD - 2.Paths[New Output]"
-          TopLeft="265.666666666667,149.5">
+          TopLeft="265.666666666667,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1419,7 +1667,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SCD - 2.Paths[OLE DB Command Output]"
-          TopLeft="88.25,353.5">
+          TopLeft="88.25,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1454,10 +1702,10 @@
         <NodeLayout
           Size="163,42"
           Id="Package\SCD - 2\Derived Column 1"
-          TopLeft="150.75,515.5" />
+          TopLeft="150.75,617.5" />
         <EdgeLayout
           Id="Package\SCD - 2.Paths[Union All Output 1]"
-          TopLeft="232.25,455.5">
+          TopLeft="232.25,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1480,10 +1728,10 @@
         <NodeLayout
           Size="163,42"
           Id="Package\SCD - 2\Insert Destination"
-          TopLeft="150.75,617.5" />
+          TopLeft="150.75,719.5" />
         <EdgeLayout
           Id="Package\SCD - 2.Paths[Derived Column Output1]"
-          TopLeft="232.25,557.5">
+          TopLeft="232.25,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1548,6 +1796,18 @@
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Customer.Outputs[OLE DB Source Output].Columns[customer_segment]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;segment_id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Customer_Segment_Lookup.Outputs[Lookup Match Output].Columns[segment_name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;segment_name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
     &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
@@ -1568,6 +1828,29 @@
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SCD - 2\Customer_Segment_Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Customer_Segment]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
