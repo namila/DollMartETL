@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{B226B5DE-1262-43C7-8ADE-6416590EFDBA}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{6654CD01-E897-40AE-AD41-B26E7EDC4EA5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1444,32 +1444,35 @@ where [refTable].[seg_id] = ?</property>
                       refId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].Columns[year]"
                       cachedDataType="i4"
                       cachedName="year"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[year]"
-                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[year]" />
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[year]" />
                     <inputColumn
                       refId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].Columns[month]"
                       cachedDataType="i4"
                       cachedName="month"
+                      cachedSortKeyPosition="2"
                       externalMetadataColumnId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[month]"
-                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[month]" />
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[month]" />
                     <inputColumn
                       refId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].Columns[day]"
                       cachedDataType="i4"
                       cachedName="day"
+                      cachedSortKeyPosition="3"
                       externalMetadataColumnId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[day]"
-                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[day]" />
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[day]" />
                     <inputColumn
                       refId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].Columns[quater]"
                       cachedDataType="i4"
                       cachedName="quater"
                       externalMetadataColumnId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[quater]"
-                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[quater]" />
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[quater]" />
                     <inputColumn
                       refId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].Columns[date]"
                       cachedDataType="dbDate"
                       cachedName="date"
                       externalMetadataColumnId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input].ExternalColumns[date]"
-                      lineageId="Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[date]" />
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1825,11 +1828,263 @@ where [refTable].[seg_id] = ?</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Date_Dimension_ETL\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[order_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="order_id"
+                      lineageId="Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[order_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[date]"
+                      cachedDataType="dbDate"
+                      cachedName="date"
+                      lineageId="Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[customer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="customer"
+                      lineageId="Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[customer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[month]"
+                      cachedDataType="i4"
+                      cachedName="month"
+                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[month]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[day]"
+                      cachedDataType="i4"
+                      cachedName="day"
+                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[day]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input].Columns[quater]"
+                      cachedDataType="i4"
+                      cachedName="quater"
+                      lineageId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[quater]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[order_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[order_id]"
+                      name="order_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[order_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[date]"
+                      dataType="dbDate"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[date]"
+                      name="date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[customer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[customer]"
+                      name="customer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output].Columns[customer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[year]"
+                      name="year"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[month]"
+                      dataType="i4"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[month]"
+                      name="month"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[month]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[day]"
+                      dataType="i4"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[day]"
+                      name="day"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[day]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[quater]"
+                      dataType="i4"
+                      lineageId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output].Columns[quater]"
+                      name="quater">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output].Columns[quater]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\Date_Dimension_ETL.Paths[Derived Column Output]"
-              endId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input]"
+              endId="Package\Date_Dimension_ETL\Sort.Inputs[Sort Input]"
               name="Derived Column Output"
               startId="Package\Date_Dimension_ETL\Derived Column.Outputs[Derived Column Output]" />
             <path
@@ -1837,6 +2092,11 @@ where [refTable].[seg_id] = ?</property>
               endId="Package\Date_Dimension_ETL\Derived Column.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Date_Dimension_ETL\Order_Header.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date_Dimension_ETL.Paths[Sort Output]"
+              endId="Package\Date_Dimension_ETL\Date_Dimension.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\Date_Dimension_ETL\Sort.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -4746,7 +5006,7 @@ where [refTable].[product_id] = ?</property>
         <NodeLayout
           Size="156,42"
           Id="Package\Date_Dimension_ETL\Date_Dimension"
-          TopLeft="132,237" />
+          TopLeft="129,320" />
         <NodeLayout
           Size="154,42"
           Id="Package\Date_Dimension_ETL\Derived Column"
@@ -4785,20 +5045,46 @@ where [refTable].[product_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Date_Dimension_ETL\Sort"
+          TopLeft="160,216" />
         <EdgeLayout
           Id="Package\Date_Dimension_ETL.Paths[Derived Column Output]"
-          TopLeft="210,173">
+          TopLeft="209.5,173">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64"
+              EndConnector="0,43"
               Start="0,0"
-              End="0,56.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.5" />
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date_Dimension_ETL.Paths[Sort Output]"
+          TopLeft="208,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
